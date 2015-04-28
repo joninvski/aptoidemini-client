@@ -1,10 +1,10 @@
 package com.aptoidemini.remote;
 
+import com.aptoidemini.domain.EventBus;
 import com.aptoidemini.remote.callback.GetAppListCallback;
+import com.aptoidemini.remote.object.AppListRest;
 import com.squareup.okhttp.Cache;
 import com.squareup.okhttp.OkHttpClient;
-import com.aptoidemini.domain.EventBus;
-import com.aptoidemini.remote.object.AppListRest;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;

@@ -1,7 +1,7 @@
 package com.aptoidemini.remote.object;
 
-import com.google.gson.annotations.SerializedName;
 import com.aptoidemini.domain.AppDetail;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 

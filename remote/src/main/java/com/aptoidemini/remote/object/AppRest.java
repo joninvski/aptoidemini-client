@@ -1,9 +1,10 @@
 package com.aptoidemini.remote.object;
 
-import com.google.gson.annotations.SerializedName;
 import com.aptoidemini.domain.App;
-import java.util.List;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class AppRest {
 
@@ -45,14 +46,14 @@ public class AppRest {
   }
 
   public static List<App> toDomain(List<AppRest> appRestList) {
-    List<App> appList = new ArrayList<App>();
+    final List<App> appList = new ArrayList<App>();
 
-    if (appRestList== null) {
+    if (appRestList == null) {
       return appList;
     }
 
-    for (AppRest appRest : appRestList) {
-      App app = appRest.toDomain();
+    for (final AppRest appRest : appRestList) {
+      final App app = appRest.toDomain();
       appList.add(app);
     }
     return appList;

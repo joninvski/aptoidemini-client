@@ -1,7 +1,7 @@
 package com.aptoidemini.remote.object;
 
-import com.google.gson.annotations.SerializedName;
 import com.aptoidemini.domain.Data;
+import com.google.gson.annotations.SerializedName;
 
 public class DataRest {
 

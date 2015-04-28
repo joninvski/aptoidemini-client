@@ -1,8 +1,9 @@
 package com.aptoidemini.remote.object;
 
-import com.google.gson.annotations.SerializedName;
-import java.util.List;
 import com.aptoidemini.domain.DataList;
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 public class DataListRest {
 
