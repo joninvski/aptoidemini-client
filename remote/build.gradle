@@ -1,0 +1,59 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'checkstyle'
+checkstyle {
+    ignoreFailures = true
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    integTest {
+        compileClasspath += main.output + test.output
+        runtimeClasspath += main.output + test.output
+    }
+}
+
+configurations {
+    integTestCompile.extendsFrom testCompile
+    integTestRuntime.extendsFrom testRuntime
+}
+
+task integTest(type: Test) {
+    description 'Runs the integration tests (rest calls interact with the real server)'
+    testClassesDir = sourceSets.integTest.output.classesDir
+    classpath = sourceSets.integTest.runtimeClasspath
+
+    outputs.upToDateWhen { false }
+
+    reports.junitXml.destination = file("${reportsDir}/integration-tests")
+    reports.html.destination = file("${reportsDir}/integration-tests")
+}
+
+dependencies {
+    compile parent.ext.libraries.retrofit
+    compile parent.ext.libraries.okhttp
+    compile parent.ext.libraries.okhttp_url
+    compile project(':domain')
+    testCompile parent.ext.libraries.junit
+}
+
+checkstyleMain << {
+    if (file("$buildDir/reports/checkstyle/main.xml").exists()) {
+        ant.xslt(in: "$buildDir/reports/checkstyle/main.xml",
+        style:"config/checkstyle/checkstyle-html.xsl",
+        out:"$buildDir/reports/checkstyle/checkstyle_main.html"
+        )
+    }
+}
+
+version = parent.ext.versionName

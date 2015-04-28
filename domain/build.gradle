@@ -1,0 +1,25 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'checkstyle'
+checkstyle {
+    ignoreFailures = true
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile parent.ext.libraries.jodatime
+
+    testCompile parent.ext.libraries.junit
+}
+
+version = '1.0'
