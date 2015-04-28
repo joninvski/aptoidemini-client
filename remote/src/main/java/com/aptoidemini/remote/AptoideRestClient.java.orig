@@ -38,17 +38,17 @@ public class AptoideRestClient {
   }
 
   public AptoideRestClient(final EventBus bus, final Client client,
-                           String apiUrl, boolean logActive) {
+                          String apiUrl, boolean logActive) {
     this(bus, client, null, apiUrl, logActive);
   }
 
   public AptoideRestClient(final EventBus bus, final Client client,
-                           final RequestInterceptor interceptor, String apiUrl) {
+                          final RequestInterceptor interceptor, String apiUrl) {
     this(bus, client, interceptor, apiUrl, true);
   }
 
   public AptoideRestClient(final EventBus bus, final Client client,
-                           final RequestInterceptor interceptor, String apiUrl, boolean logActive) {
+                          final RequestInterceptor interceptor, String apiUrl, boolean logActive) {
     mBus = bus;
     bus.register(this);
 

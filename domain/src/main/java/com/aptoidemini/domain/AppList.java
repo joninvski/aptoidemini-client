@@ -3,13 +3,13 @@ package com.aptoidemini.domain;
 
 public class AppList {
 
-  private Apk apk;
+  private final Datasets datasets;
 
-  public AppList(Apk apk) {
-    this.apk = apk;
+  public AppList(Datasets datasets) {
+    this.datasets = datasets;
   }
 
-  public Apk getApk() {
-    return apk;
+  public Datasets getDatasets() {
+    return datasets;
   }
 }

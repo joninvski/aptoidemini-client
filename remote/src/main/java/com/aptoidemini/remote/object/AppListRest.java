@@ -2,21 +2,22 @@ package com.aptoidemini.remote.object;
 
 import com.google.gson.annotations.SerializedName;
 import com.aptoidemini.domain.AppList;
+import com.aptoidemini.domain.Datasets;
 
 public class AppListRest {
 
-  @SerializedName("apk")
-  private ApkRest apkRest;
+  @SerializedName("datasets")
+  private DatasetsRest datasetsRest;
 
-  public AppListRest(ApkRest apkRest) {
-    this.apkRest = apkRest;
+  public AppListRest(DatasetsRest datasets) {
+    this.datasetsRest = datasets;
   }
 
-  public ApkRest getApkRest() {
-    return apkRest;
+  public DatasetsRest getDataset() {
+    return datasetsRest;
   }
 
   public AppList toDomain() {
-    return new AppList(getApkRest().toDomain());
+    return new AppList(getDataset().toDomain());
   }
 }
