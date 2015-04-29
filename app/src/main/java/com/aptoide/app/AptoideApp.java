@@ -5,7 +5,6 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.aptoide.app.BuildConfig;
 import com.aptoide.app.event.OttoBus;
 import com.aptoidemini.domain.EventBus;
 import com.aptoidemini.remote.AptoideRestClient;
@@ -30,8 +29,9 @@ public class AptoideApp extends Application {
 
   private void createRestClient() {
     final boolean shouldLog = true;
+    final String apiUrl = "http://ws2.aptoide.com/api/";
     mRest = AptoideRestClient.getRestWithCache(getBus(), getCacheDir().getAbsolutePath(),
-            createInterceptor(), BuildConfig.API_URL, shouldLog);
+            createInterceptor(), apiUrl, shouldLog);
   }
 
   private void configureBus() {
