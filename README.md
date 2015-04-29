@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/joninvski/aptoidemini-client.svg?branch=master)](https://travis-ci.org/joninvski/aptoidemini-client)
+
 # AptoideMini client
 
 The Aptoide Mini client file structure:
