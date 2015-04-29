@@ -1,6 +1,6 @@
-# WalletSaver
+# AptoideMini client
 
-The Walletsaver android part:
+The Aptoide Mini client file structure:
 
 ```
 .

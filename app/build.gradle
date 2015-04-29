@@ -1,0 +1,84 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath parent.ext.libraries.androidtools_gradle
+
+        // This bug https://github.com/stanfy/spoon-gradle-plugin/issues/33 explain the next lines
+        // classpath parent.ext.libraries.spoon_gradle
+        classpath('com.stanfy.spoon:spoon-gradle-plugin:0.14.1') {
+          exclude module: 'guava'
+        }
+        classpath 'com.google.guava:guava:17.0'
+
+        classpath parent.ext.libraries.sdkmanager_gradle
+        classpath parent.ext.libraries.android_cq_gradle
+        classpath parent.ext.libraries.hugo_gradle
+    }
+}
+
+configurations {
+    all*.exclude group: 'commons-logging', module: 'commons-logging'
+}
+
+apply plugin: 'android-sdk-manager'
+apply plugin: 'com.android.application'
+apply plugin: 'hugo'
+apply plugin: 'spoon'
+apply plugin: 'android-cq'
+
+android {
+    compileSdkVersion parent.ext.compileSdkVersion
+    buildToolsVersion parent.ext.buildToolsVersion
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    defaultConfig {
+        versionCode      parent.ext.versionCode
+        versionName      parent.ext.versionName
+        applicationId    parent.ext.applicationId
+
+        minSdkVersion    parent.ext.minSdkVersion
+        targetSdkVersion parent.ext.targetSdkVersion
+    }
+
+    buildTypes {
+
+        debug {
+            applicationIdSuffix ".debug"
+            buildConfigField "String", "API_URL", "\"http://ws2.aptoide.com/api/6\""
+            versionNameSuffix "-DEBUG"
+        }
+    }
+}
+
+dependencies {
+    compile parent.ext.libraries.appcompat
+    compile parent.ext.libraries.hugo
+    compile parent.ext.libraries.jodatime
+    compile parent.ext.libraries.otto
+    compile parent.ext.libraries.timber
+    compile project(':domain')
+    compile project(':remote')
+    compile fileTree(dir: 'libs', include: '*.jar')
+
+    androidTestCompile parent.ext.libraries.assertj
+    androidTestCompile parent.ext.libraries.robotium
+    androidTestCompile parent.ext.libraries.spoonclient
+}
