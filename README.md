@@ -38,7 +38,7 @@ The Aptoide Mini client file structure:
     ./gradlew installDebug
     ```
 
-## Activity tests
+## Activity tests (TODO)
 
 * Installs and runs the tests for Build 'debug' on connected devices.
 
@@ -57,7 +57,7 @@ The Aptoide Mini client file structure:
     ./gradlew :robolectric:testRelease                          # Results in robolectric/build/test-report/index.html
     ```
 
-## Remote tests
+## Remote tests (TODO)
 
 More info can be found in remote/README.md but the basics:
 

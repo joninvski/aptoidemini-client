@@ -5,9 +5,10 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import com.aptoide.app.BuildConfig;
+import com.aptoide.app.event.OttoBus;
 import com.aptoidemini.domain.EventBus;
 import com.aptoidemini.remote.AptoideRestClient;
-import com.aptoide.app.event.OttoBus;
 
 import retrofit.RequestInterceptor;
 
